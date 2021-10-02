@@ -3,11 +3,18 @@
 }
 .App{
     background-color: #fafafa;
-    height: 100vh;
+    height: 100%;
 }
 .app__header{
+    position: sticky;
+    top: 0;
+    z-index: 1;
     background-color: #fff;
     border-bottom: 1px solid lightgrey;
+    display: flex;
+    width: 98vw;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .app__headerImage{
@@ -25,4 +32,7 @@
 }
 .none{
     display: none;
+}
+h3{
+    text-align: center;
 }

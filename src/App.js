@@ -29,8 +29,11 @@ function App() {
 
 
     useEffect(() => {
-        db.collection('posts').onSnapshot(snapshot => {
-            setPosts(snapshot.docs.map(doc => doc.data()))
+        db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+            setPosts(snapshot.docs.map(doc => ({
+                id: doc.id,
+                post: doc.data(),
+            })))
         })
     }, []);
 
@@ -39,7 +42,6 @@ function App() {
             if(authUser){
                 //user has logged in
                 setUser(authUser);
-                console.log(authUser);
             } else{
                 // user is logged out
                 setUser(null);
@@ -92,9 +94,7 @@ function App() {
   return (
     <div className="App">
 
-
-        <ImageUpload />
-
+        
         <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -143,10 +143,15 @@ function App() {
               
       </div>
       {
-          posts.map(post => (
-              <Post post={post}/>
+          posts.map((post) => (
+              <Post postId={post.id} user={user} post={post.post} />
           ))
       }
+      {user?.displayName ? (
+            <ImageUpload  username={user.displayName}/>
+        ) : (
+            <h3>Please log in to create your own post</h3>
+        )}
     </div>
   );
 }
