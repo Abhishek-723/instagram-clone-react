@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+}
+.App{
+    background-color: #fafafa;
+    height: 100vh;
+}
+.app__header{
+    background-color: #fff;
+    border-bottom: 1px solid lightgrey;
+}
+
+.app__headerImage{
+    width: 100px;
+    padding: 10px;
+}
+.signup-box{
+    background-color: #fff;
+}
+.signup-box center{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.none{
+    display: none;
+}
